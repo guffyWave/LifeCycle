@@ -15,11 +15,13 @@ import com.gufran.androidcomponentlifecycle.R;
  * Created by gufran on 12/12/16.
  */
 
-public class FragmentOne extends Fragment {
-    String TAG = "GUFRAN " + FragmentOne.class.getName();
+public class FragmentTwo extends Fragment {
 
-    public FragmentOne() {
-        Log.d(TAG, "FragmentOne: constructor ");
+    String TAG = "GUFRAN " + FragmentTwo.class.getName();
+
+
+    public FragmentTwo() {
+        Log.d(TAG, "FragmentTwo: constructor ");
     }
 
     @Override
@@ -27,7 +29,6 @@ public class FragmentOne extends Fragment {
         super.onAttach(context);
         Log.d(TAG, "onAttach: ");
     }
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class FragmentOne extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView: ");
-        return inflater.inflate(R.layout.fragment_one, container, false);
+        return inflater.inflate(R.layout.fragment_two, container, false);
     }
 
     @Override
@@ -47,6 +48,7 @@ public class FragmentOne extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Log.d(TAG, "onViewCreated: ");
     }
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -59,8 +61,6 @@ public class FragmentOne extends Fragment {
         super.onViewStateRestored(savedInstanceState);
         Log.d(TAG, "onViewStateRestored: ");
     }
-
-
 
     @Override
     public void onStart() {
@@ -97,6 +97,7 @@ public class FragmentOne extends Fragment {
         super.onDestroy();
         Log.d(TAG, "onDestroy: ");
     }
+
 
     @Override
     public void onDetach() {

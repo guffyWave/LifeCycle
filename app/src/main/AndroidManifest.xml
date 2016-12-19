@@ -15,18 +15,21 @@
             android:launchMode="standard">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".SecondActivity"
-            android:launchMode="singleInstance"></activity>
+            android:launchMode="standard" />
 
         <receiver android:name=".reciever.NetworkChangeBroadcastReciever">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".ThirdActivity"></activity>
     </application>
 
 </manifest>

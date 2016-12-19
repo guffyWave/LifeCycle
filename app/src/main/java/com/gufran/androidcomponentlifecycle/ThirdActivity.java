@@ -1,16 +1,28 @@
 package com.gufran.androidcomponentlifecycle;
 
 import android.content.Intent;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.FrameLayout;
 
-public class SecondActivity extends AppCompatActivity {
+import com.gufran.androidcomponentlifecycle.fragments.FragmentOne;
+import com.gufran.androidcomponentlifecycle.fragments.FragmentTwo;
 
-    String TAG = "GUFRAN " + SecondActivity.class.getName();
+public class ThirdActivity extends AppCompatActivity {
+
+    String TAG = "GUFRAN " + ThirdActivity.class.getName();
     int VALUE = 0;
+    FrameLayout frameLayout;
 
-    public SecondActivity() {
+    FragmentManager fragmentManager;
+    FragmentOne fragmentOne;
+    FragmentTwo fragmentTwo;
+
+    public ThirdActivity() {
         Log.d(TAG, "Constructor ");
     }
 
@@ -18,8 +30,31 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate: VALUE= " + VALUE);
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_third);
 
+        frameLayout = (FrameLayout) findViewById(R.id.containerFrameLayout);
+
+        fragmentManager = getSupportFragmentManager();
+    }
+
+    public void onClickOne(View v) {
+
+        FragmentTransaction fragmentTransaction =
+                fragmentManager.beginTransaction();
+        fragmentOne = new FragmentOne();
+        fragmentTransaction.replace(R.id.containerFrameLayout, fragmentOne, "FRAGMENT_ONE");
+        //fragmentTransaction.addToBackStack("FRAGMENT_ONE");
+        fragmentTransaction.commit();
+    }
+
+
+    public void onClickTwo(View v) {
+        FragmentTransaction fragmentTransaction =
+                fragmentManager.beginTransaction();
+        fragmentTwo = new FragmentTwo();
+        fragmentTransaction.replace(R.id.containerFrameLayout, fragmentTwo, "FRAGMENT_TWO");
+        // fragmentTransaction.addToBackStack("FRAGMENT_TWO");
+        fragmentTransaction.commit();
     }
 
 
@@ -89,7 +124,5 @@ public class SecondActivity extends AppCompatActivity {
         super.finalize();
         Log.d(TAG, "finalize:  VALUE= " + VALUE);
     }
-
-
 
 }
