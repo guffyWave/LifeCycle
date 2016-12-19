@@ -51,6 +51,7 @@ public class FragmentOne extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        //Restore the fragment's state here
         Log.d(TAG, "onActivityCreated: ");
     }
 
@@ -59,7 +60,6 @@ public class FragmentOne extends Fragment {
         super.onViewStateRestored(savedInstanceState);
         Log.d(TAG, "onViewStateRestored: ");
     }
-
 
 
     @Override
@@ -72,6 +72,14 @@ public class FragmentOne extends Fragment {
     public void onResume() {
         super.onResume();
         Log.d(TAG, "onResume: ");
+    }
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        //Save the fragment's state here
+        Log.d(TAG, "onSaveInstanceState: ");
     }
 
     @Override

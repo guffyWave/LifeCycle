@@ -1,28 +1,35 @@
 package com.gufran.androidcomponentlifecycle;
 
-import android.content.Intent;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.FrameLayout;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+
+import com.gufran.androidcomponentlifecycle.adapters.MyFragmentPagerAdapter;
 import com.gufran.androidcomponentlifecycle.fragments.FragmentOne;
+import com.gufran.androidcomponentlifecycle.fragments.FragmentThree;
 import com.gufran.androidcomponentlifecycle.fragments.FragmentTwo;
 
-public class ThirdActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
 
-    String TAG = "GUFRAN " + ThirdActivity.class.getName();
+public class FourthActivity extends AppCompatActivity {
+
+
+    String TAG = "GUFRAN " + SecondActivity.class.getName();
     int VALUE = 0;
-    FrameLayout frameLayout;
-
-    FragmentManager fragmentManager;
+    ViewPager viewpager;
     FragmentOne fragmentOne;
     FragmentTwo fragmentTwo;
+    FragmentThree fragmentThree;
+    List<Fragment> fragmentList;
+    MyFragmentPagerAdapter myFragmentPagerAdapter;
 
-    public ThirdActivity() {
+
+    public FourthActivity() {
         Log.d(TAG, "Constructor ");
     }
 
@@ -30,31 +37,20 @@ public class ThirdActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate: VALUE= " + VALUE);
-        setContentView(R.layout.activity_third);
+        setContentView(R.layout.activity_fourth);
 
-        frameLayout = (FrameLayout) findViewById(R.id.containerFrameLayout);
-
-        fragmentManager = getSupportFragmentManager();
-    }
-
-    public void onClickOne(View v) {
-
-        FragmentTransaction fragmentTransaction =
-                fragmentManager.beginTransaction();
         fragmentOne = new FragmentOne();
-        fragmentTransaction.replace(R.id.containerFrameLayout, fragmentOne, "FRAGMENT_ONE");
-        //fragmentTransaction.addToBackStack("FRAGMENT_ONE");
-        fragmentTransaction.commit();
-    }
-
-
-    public void onClickTwo(View v) {
-        FragmentTransaction fragmentTransaction =
-                fragmentManager.beginTransaction();
         fragmentTwo = new FragmentTwo();
-        fragmentTransaction.replace(R.id.containerFrameLayout, fragmentTwo, "FRAGMENT_TWO");
-        // fragmentTransaction.addToBackStack("FRAGMENT_TWO");
-        fragmentTransaction.commit();
+        fragmentThree = new FragmentThree();
+        fragmentList = new ArrayList<>();
+        fragmentList.add(fragmentOne);
+        fragmentList.add(fragmentTwo);
+        fragmentList.add(fragmentThree);
+
+        viewpager = (ViewPager) findViewById(R.id.viewpager);
+        myFragmentPagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), FourthActivity.this, fragmentList);
+        viewpager.setOffscreenPageLimit(0);
+        viewpager.setAdapter(myFragmentPagerAdapter);
     }
 
 
@@ -76,11 +72,6 @@ public class ThirdActivity extends AppCompatActivity {
         Log.d(TAG, "onRestart: VALUE= " + VALUE);
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        Log.d(TAG, "onSaveInstanceState: ");
-    }
 
     @Override
     protected void onPause() {
@@ -129,5 +120,6 @@ public class ThirdActivity extends AppCompatActivity {
         super.finalize();
         Log.d(TAG, "finalize:  VALUE= " + VALUE);
     }
+
 
 }

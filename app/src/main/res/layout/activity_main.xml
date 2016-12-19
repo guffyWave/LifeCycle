@@ -25,10 +25,10 @@
         android:onClick="onClickTwo"
         android:text="Click Two" />
 
-  <!--  <Button
+ <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClickThree"
-        android:text="Click Three" /-->>
+        android:text="Click Three" />
 
 </LinearLayout>

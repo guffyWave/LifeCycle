@@ -21,4 +21,8 @@ public class MainActivity extends AppCompatActivity {
     public void onClickTwo(View v) {
         startActivity(new Intent(MainActivity.this, ThirdActivity.class));
     }
+
+    public void onClickThree(View v) {
+        startActivity(new Intent(MainActivity.this, FourthActivity.class));
+    }
 }

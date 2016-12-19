@@ -77,6 +77,13 @@ public class FragmentThree extends Fragment {
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        //Save the fragment's state here
+        Log.d(TAG, "onSaveInstanceState: ");
+    }
+
+    @Override
     public void onPause() {
         super.onPause();
         Log.d(TAG, "onPause: ");
