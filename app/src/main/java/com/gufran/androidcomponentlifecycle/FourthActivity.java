@@ -49,7 +49,7 @@ public class FourthActivity extends AppCompatActivity {
         viewpager = (ViewPager) findViewById(R.id.viewpager);
         //myFragmentPagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), FourthActivity.this, fragmentList);
         myFragmentPagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), FourthActivity.this, fragmentList);
-        viewpager.setOffscreenPageLimit(0);
+       // viewpager.setOffscreenPageLimit(0);
         viewpager.setAdapter(myFragmentPagerAdapter);
     }
 
