@@ -35,13 +35,16 @@ public class ThirdActivity extends AppCompatActivity {
         frameLayout = (FrameLayout) findViewById(R.id.containerFrameLayout);
 
         fragmentManager = getSupportFragmentManager();
+
+        fragmentOne = new FragmentOne();
+        fragmentTwo = new FragmentTwo();
     }
 
     public void onClickOne(View v) {
 
         FragmentTransaction fragmentTransaction =
                 fragmentManager.beginTransaction();
-        fragmentOne = new FragmentOne();
+
         fragmentTransaction.replace(R.id.containerFrameLayout, fragmentOne, "FRAGMENT_ONE");
         //fragmentTransaction.addToBackStack("FRAGMENT_ONE");
         fragmentTransaction.commit();
@@ -51,7 +54,7 @@ public class ThirdActivity extends AppCompatActivity {
     public void onClickTwo(View v) {
         FragmentTransaction fragmentTransaction =
                 fragmentManager.beginTransaction();
-        fragmentTwo = new FragmentTwo();
+
         fragmentTransaction.replace(R.id.containerFrameLayout, fragmentTwo, "FRAGMENT_TWO");
         // fragmentTransaction.addToBackStack("FRAGMENT_TWO");
         fragmentTransaction.commit();

@@ -55,7 +55,7 @@ public class FragmentOne extends Fragment {
         Log.d(TAG, "onActivityCreated: ");
     }
 
-    @Override
+    @Override // only In Android API >= 17
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
         Log.d(TAG, "onViewStateRestored: ");

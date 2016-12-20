@@ -18,7 +18,6 @@ import java.util.List;
 
 public class FourthActivity extends AppCompatActivity {
 
-
     String TAG = "GUFRAN " + SecondActivity.class.getName();
     int VALUE = 0;
     ViewPager viewpager;
@@ -48,6 +47,7 @@ public class FourthActivity extends AppCompatActivity {
         fragmentList.add(fragmentThree);
 
         viewpager = (ViewPager) findViewById(R.id.viewpager);
+        //myFragmentPagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), FourthActivity.this, fragmentList);
         myFragmentPagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), FourthActivity.this, fragmentList);
         viewpager.setOffscreenPageLimit(0);
         viewpager.setAdapter(myFragmentPagerAdapter);
