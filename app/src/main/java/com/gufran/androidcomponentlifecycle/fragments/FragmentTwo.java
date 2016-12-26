@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.gufran.androidcomponentlifecycle.R;
 
@@ -18,6 +19,7 @@ import com.gufran.androidcomponentlifecycle.R;
 public class FragmentTwo extends Fragment {
 
     String TAG = "GUFRAN " + FragmentTwo.class.getName();
+    Button startButton;
 
 
     public FragmentTwo() {
@@ -80,7 +82,6 @@ public class FragmentTwo extends Fragment {
         //Save the fragment's state here
         Log.d(TAG, "onSaveInstanceState: ");
     }
-
 
 
     @Override
