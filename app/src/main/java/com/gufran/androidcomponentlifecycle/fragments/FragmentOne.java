@@ -1,6 +1,7 @@
 package com.gufran.androidcomponentlifecycle.fragments;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.gufran.androidcomponentlifecycle.R;
 
@@ -45,6 +47,12 @@ public class FragmentOne extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        view.findViewById(R.id.startAsyncButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new MyAsyncTask().execute("");
+            }
+        });
         Log.d(TAG, "onViewCreated: ");
     }
 
@@ -111,4 +119,45 @@ public class FragmentOne extends Fragment {
         super.onDetach();
         Log.d(TAG, "onDetach: ");
     }
+
+
+    class MyAsyncTask extends AsyncTask<String, Integer, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Log.d(TAG, "MyAsyncTask onPreExecute: ");
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            Log.d(TAG, "MyAsyncTask doInBackground: ");
+
+            for (int i = 0; i <= 10; i++) {
+                publishProgress(i);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            return "Done";
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+            Log.d(TAG, "MyAsyncTask onProgressUpdate: " + values[0]);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            Log.d(TAG, "MyAsyncTask onPostExecute: " + s);
+            if (isAdded())
+                Toast.makeText(getActivity(), "Result " + s, Toast.LENGTH_LONG).show();
+        }
+    }
+
+
 }

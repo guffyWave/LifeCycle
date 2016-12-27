@@ -4,6 +4,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -73,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
 //        }
     }
 
+
+
     public void doBindService() {
         Intent intent = null;
         intent = new Intent(this, MyService.class);
@@ -83,4 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
         bindService(intent, myConnection, Context.BIND_AUTO_CREATE);
     }
+
+
+
 }

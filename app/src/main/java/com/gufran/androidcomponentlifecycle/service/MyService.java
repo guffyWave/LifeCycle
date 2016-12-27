@@ -65,6 +65,13 @@ public class MyService extends Service {
         Log.d(TAG, "onDestroy: ");
     }
 
+    //called where "the user has removed a task" means swiping the app out from the task list *
+    //use with <service android:name="com.example.AnyService" android:stopWithTask="false" />
+    @Override
+    public void onTaskRemoved(Intent rootIntent) {
+        super.onTaskRemoved(rootIntent);
+    }
+
     public void myMethod() {
         Log.d(TAG, "myMethod: ");
     }
